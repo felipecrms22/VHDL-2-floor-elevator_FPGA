@@ -1,0 +1,253 @@
+|Eleva_dor
+SW[0] => controladora:controladora_inst.BC1
+SW[1] => controladora:controladora_inst.BC2
+SW[2] => controladora:controladora_inst.SPA
+SW[3] => controladora:controladora_inst.BE
+SW[4] => ~NO_FANOUT~
+SW[5] => ~NO_FANOUT~
+SW[6] => ~NO_FANOUT~
+SW[7] => ~NO_FANOUT~
+SW[8] => ~NO_FANOUT~
+SW[9] => ~NO_FANOUT~
+KEY[0] => ~NO_FANOUT~
+KEY[1] => ~NO_FANOUT~
+LEDR[0] <= controladora:controladora_inst.PA
+LEDR[1] <= controladora:controladora_inst.ME
+LEDR[2] <= datapath:datapath_inst.IA
+LEDR[3] <= controladora:controladora_inst.IAF
+LEDR[4] <= <GND>
+LEDR[5] <= <GND>
+LEDR[6] <= <GND>
+LEDR[7] <= <GND>
+LEDR[8] <= <GND>
+LEDR[9] <= controladora:controladora_inst.LE
+CLOCK_50 => DivisorClock:clock_inst.CLOCK_50MHz
+
+
+|Eleva_dor|DivisorClock:clock_inst
+CLOCK_50MHz => clk.CLK
+CLOCK_50MHz => cnt[0].CLK
+CLOCK_50MHz => cnt[1].CLK
+CLOCK_50MHz => cnt[2].CLK
+CLOCK_50MHz => cnt[3].CLK
+CLOCK_50MHz => cnt[4].CLK
+CLOCK_50MHz => cnt[5].CLK
+CLOCK_50MHz => cnt[6].CLK
+CLOCK_50MHz => cnt[7].CLK
+CLOCK_50MHz => cnt[8].CLK
+CLOCK_50MHz => cnt[9].CLK
+CLOCK_50MHz => cnt[10].CLK
+CLOCK_50MHz => cnt[11].CLK
+CLOCK_50MHz => cnt[12].CLK
+CLOCK_50MHz => cnt[13].CLK
+CLOCK_50MHz => cnt[14].CLK
+CLOCK_50MHz => cnt[15].CLK
+CLOCK_50MHz => cnt[16].CLK
+CLOCK_50MHz => cnt[17].CLK
+CLOCK_50MHz => cnt[18].CLK
+CLOCK_50MHz => cnt[19].CLK
+CLOCK_50MHz => cnt[20].CLK
+CLOCK_50MHz => cnt[21].CLK
+CLOCK_50MHz => cnt[22].CLK
+CLOCK_50MHz => cnt[23].CLK
+CLOCK_50MHz => cnt[24].CLK
+CLOCK_50MHz => cnt[25].CLK
+reset => cnt[0].ACLR
+reset => cnt[1].ACLR
+reset => cnt[2].ACLR
+reset => cnt[3].ACLR
+reset => cnt[4].ACLR
+reset => cnt[5].ACLR
+reset => cnt[6].ACLR
+reset => cnt[7].ACLR
+reset => cnt[8].ACLR
+reset => cnt[9].ACLR
+reset => cnt[10].ACLR
+reset => cnt[11].ACLR
+reset => cnt[12].ACLR
+reset => cnt[13].ACLR
+reset => cnt[14].ACLR
+reset => cnt[15].ACLR
+reset => cnt[16].ACLR
+reset => cnt[17].ACLR
+reset => cnt[18].ACLR
+reset => cnt[19].ACLR
+reset => cnt[20].ACLR
+reset => cnt[21].ACLR
+reset => cnt[22].ACLR
+reset => cnt[23].ACLR
+reset => cnt[24].ACLR
+reset => cnt[25].ACLR
+reset => clk.ENA
+CLOCK_4Hz <= clk.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Eleva_dor|datapath:datapath_inst
+cont_load => Contador:cont2.CONT_LOAD
+cont_clear => Contador:cont2.RESET
+IAF => reg_iaf:reg_de_iaf.entrada_iaf
+CLOCK => Contador:cont2.CLOCK
+CLOCK => Comparador_16:comp.CLOCK
+CLOCK => reg_iaf:reg_de_iaf.CLOCK_iaf
+CLOCK => reg_ia:reg_de_ia.CLOCK_ia
+IA_load => reg_ia:reg_de_ia.carregar_bit_ia
+IA <= reg_ia:reg_de_ia.saida_ia
+cmp_eq <= Comparador_16:comp.igual_ou_maior
+Ciclos_comparador[0] => Comparador_16:comp.B[0]
+Ciclos_comparador[1] => Comparador_16:comp.B[1]
+Ciclos_comparador[2] => Comparador_16:comp.B[2]
+Ciclos_comparador[3] => Comparador_16:comp.B[3]
+Ciclos_comparador[4] => Comparador_16:comp.B[4]
+Ciclos_comparador[5] => Comparador_16:comp.B[5]
+Ciclos_comparador[6] => Comparador_16:comp.B[6]
+Ciclos_comparador[7] => Comparador_16:comp.B[7]
+Ciclos_comparador[8] => Comparador_16:comp.B[8]
+Ciclos_comparador[9] => Comparador_16:comp.B[9]
+Ciclos_comparador[10] => Comparador_16:comp.B[10]
+Ciclos_comparador[11] => Comparador_16:comp.B[11]
+Ciclos_comparador[12] => Comparador_16:comp.B[12]
+Ciclos_comparador[13] => Comparador_16:comp.B[13]
+Ciclos_comparador[14] => Comparador_16:comp.B[14]
+Ciclos_comparador[15] => Comparador_16:comp.B[15]
+IAF_carregado <= reg_iaf:reg_de_iaf.saida_iaf
+
+
+|Eleva_dor|datapath:datapath_inst|Contador:cont2
+CLOCK => COUNT[0].CLK
+CLOCK => COUNT[1].CLK
+CLOCK => COUNT[2].CLK
+CLOCK => COUNT[3].CLK
+CLOCK => COUNT[4].CLK
+CLOCK => COUNT[5].CLK
+CLOCK => COUNT[6].CLK
+CLOCK => COUNT[7].CLK
+CLOCK => COUNT[8].CLK
+CLOCK => COUNT[9].CLK
+CLOCK => COUNT[10].CLK
+CLOCK => COUNT[11].CLK
+CLOCK => COUNT[12].CLK
+CLOCK => COUNT[13].CLK
+CLOCK => COUNT[14].CLK
+CLOCK => COUNT[15].CLK
+RESET => COUNT[0].ACLR
+RESET => COUNT[1].ACLR
+RESET => COUNT[2].ACLR
+RESET => COUNT[3].ACLR
+RESET => COUNT[4].ACLR
+RESET => COUNT[5].ACLR
+RESET => COUNT[6].ACLR
+RESET => COUNT[7].ACLR
+RESET => COUNT[8].ACLR
+RESET => COUNT[9].ACLR
+RESET => COUNT[10].ACLR
+RESET => COUNT[11].ACLR
+RESET => COUNT[12].ACLR
+RESET => COUNT[13].ACLR
+RESET => COUNT[14].ACLR
+RESET => COUNT[15].ACLR
+CONT_LOAD => COUNT[15].ENA
+CONT_LOAD => COUNT[14].ENA
+CONT_LOAD => COUNT[13].ENA
+CONT_LOAD => COUNT[12].ENA
+CONT_LOAD => COUNT[11].ENA
+CONT_LOAD => COUNT[10].ENA
+CONT_LOAD => COUNT[9].ENA
+CONT_LOAD => COUNT[8].ENA
+CONT_LOAD => COUNT[7].ENA
+CONT_LOAD => COUNT[6].ENA
+CONT_LOAD => COUNT[5].ENA
+CONT_LOAD => COUNT[4].ENA
+CONT_LOAD => COUNT[3].ENA
+CONT_LOAD => COUNT[2].ENA
+CONT_LOAD => COUNT[1].ENA
+CONT_LOAD => COUNT[0].ENA
+FINAL_VALUE[0] <= COUNT[0].DB_MAX_OUTPUT_PORT_TYPE
+FINAL_VALUE[1] <= COUNT[1].DB_MAX_OUTPUT_PORT_TYPE
+FINAL_VALUE[2] <= COUNT[2].DB_MAX_OUTPUT_PORT_TYPE
+FINAL_VALUE[3] <= COUNT[3].DB_MAX_OUTPUT_PORT_TYPE
+FINAL_VALUE[4] <= COUNT[4].DB_MAX_OUTPUT_PORT_TYPE
+FINAL_VALUE[5] <= COUNT[5].DB_MAX_OUTPUT_PORT_TYPE
+FINAL_VALUE[6] <= COUNT[6].DB_MAX_OUTPUT_PORT_TYPE
+FINAL_VALUE[7] <= COUNT[7].DB_MAX_OUTPUT_PORT_TYPE
+FINAL_VALUE[8] <= COUNT[8].DB_MAX_OUTPUT_PORT_TYPE
+FINAL_VALUE[9] <= COUNT[9].DB_MAX_OUTPUT_PORT_TYPE
+FINAL_VALUE[10] <= COUNT[10].DB_MAX_OUTPUT_PORT_TYPE
+FINAL_VALUE[11] <= COUNT[11].DB_MAX_OUTPUT_PORT_TYPE
+FINAL_VALUE[12] <= COUNT[12].DB_MAX_OUTPUT_PORT_TYPE
+FINAL_VALUE[13] <= COUNT[13].DB_MAX_OUTPUT_PORT_TYPE
+FINAL_VALUE[14] <= COUNT[14].DB_MAX_OUTPUT_PORT_TYPE
+FINAL_VALUE[15] <= COUNT[15].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Eleva_dor|datapath:datapath_inst|Comparador_16:comp
+A[0] => LessThan0.IN16
+A[1] => LessThan0.IN15
+A[2] => LessThan0.IN14
+A[3] => LessThan0.IN13
+A[4] => LessThan0.IN12
+A[5] => LessThan0.IN11
+A[6] => LessThan0.IN10
+A[7] => LessThan0.IN9
+A[8] => LessThan0.IN8
+A[9] => LessThan0.IN7
+A[10] => LessThan0.IN6
+A[11] => LessThan0.IN5
+A[12] => LessThan0.IN4
+A[13] => LessThan0.IN3
+A[14] => LessThan0.IN2
+A[15] => LessThan0.IN1
+B[0] => LessThan0.IN32
+B[1] => LessThan0.IN31
+B[2] => LessThan0.IN30
+B[3] => LessThan0.IN29
+B[4] => LessThan0.IN28
+B[5] => LessThan0.IN27
+B[6] => LessThan0.IN26
+B[7] => LessThan0.IN25
+B[8] => LessThan0.IN24
+B[9] => LessThan0.IN23
+B[10] => LessThan0.IN22
+B[11] => LessThan0.IN21
+B[12] => LessThan0.IN20
+B[13] => LessThan0.IN19
+B[14] => LessThan0.IN18
+B[15] => LessThan0.IN17
+CLOCK => igual_ou_maior~reg0.CLK
+igual_ou_maior <= igual_ou_maior~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Eleva_dor|datapath:datapath_inst|reg_iaf:reg_de_iaf
+entrada_iaf => saida_iaf~reg0.DATAIN
+carregar_bit_iaf => saida_iaf~reg0.ENA
+CLOCK_iaf => saida_iaf~reg0.CLK
+saida_iaf <= saida_iaf~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Eleva_dor|datapath:datapath_inst|reg_ia:reg_de_ia
+entrada_ia => saida_ia~reg0.DATAIN
+carregar_bit_ia => saida_ia~reg0.ENA
+CLOCK_ia => saida_ia~reg0.CLK
+saida_ia <= saida_ia~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Eleva_dor|controladora:controladora_inst
+BC1 => P2.IN0
+BC2 => P2.IN0
+SPA => P2.IN1
+BE => P2.IN1
+cmp_eq => Mux9.IN6
+cmp_eq => Mux9.IN7
+IA => P2.IN1
+IA => P2.IN1
+CLOCK => estado_atual[0].CLK
+CLOCK => estado_atual[1].CLK
+CLOCK => estado_atual[2].CLK
+ME <= ME$latch.DB_MAX_OUTPUT_PORT_TYPE
+LE <= LE.DB_MAX_OUTPUT_PORT_TYPE
+PA <= PA$latch.DB_MAX_OUTPUT_PORT_TYPE
+cont_load <= cont_load$latch.DB_MAX_OUTPUT_PORT_TYPE
+cont_clear <= cont_clear.DB_MAX_OUTPUT_PORT_TYPE
+IA_load <= IA_load$latch.DB_MAX_OUTPUT_PORT_TYPE
+IAF <= IAF$latch.DB_MAX_OUTPUT_PORT_TYPE
+
+

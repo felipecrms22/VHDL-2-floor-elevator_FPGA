@@ -1,0 +1,16 @@
+Analysis & Synthesis Status : Successful - Wed Dec 03 14:38:54 2025
+Quartus Prime Version : 20.1.0 Build 711 06/05/2020 SJ Lite Edition
+Revision Name : Eleva_dor
+Top-level Entity Name : Eleva_dor
+Family : MAX 10
+Total logic elements : 90
+    Total combinational functions : 90
+    Dedicated logic registers : 49
+Total registers : 49
+Total pins : 23
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0
+UFM blocks : 0
+ADC blocks : 0

@@ -1,0 +1,78 @@
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+entity datapath is
+generic(W : natural := 16
+);
+port(
+	cont_load, cont_clear : in std_logic;
+  	IAF : in std_logic;
+  	CLOCK : in std_logic;
+    IA_load : in std_logic;
+    IA : out std_logic;
+    cmp_eq : out std_logic;
+    Ciclos_comparador : in std_logic_vector (15 downto 0);
+    IAF_carregado : out std_logic
+);
+
+end entity datapath;
+
+architecture arch_datapath of datapath is
+
+signal resultado_contador : std_logic_vector (15 downto 0);
+signal saida_IAF_reg : std_logic;
+
+component Contador is
+	generic (
+		W : natural := 16
+	);
+	port(
+		CLOCK : in std_logic;
+		RESET : in std_logic;
+        CONT_LOAD : in std_logic;
+		FINAL_VALUE : out std_logic_vector (W-1 downto 0)
+	);
+end component;
+
+component Comparador_16 is
+  Port (
+    A : in std_logic_vector (15 downto 0) := (others => '0');
+    B : in std_logic_vector (15 downto 0) := (others => '0');
+    CLOCK : in std_logic;
+    igual_ou_maior : out std_logic
+  );
+end compoNENT;
+
+
+component reg_iaf is
+  port (  entrada_iaf : in std_logic := '0';
+          carregar_bit_iaf : in std_logic := '1';
+          CLOCK_iaf : in std_logic := '0';
+          saida_iaf : out std_logic := '0'
+  );
+
+end component;
+
+
+component reg_ia is
+  port (  entrada_ia : in std_logic := '0';
+          carregar_bit_ia : in std_logic := '0';
+          CLOCK_ia : in std_logic := '0';
+          saida_ia : out std_logic := '0'
+  );
+end component;
+
+
+begin
+    cont2: contador port map(CLOCK => CLOCK, RESET => cont_clear, CONT_LOAD => cont_load, FINAL_VALUE => resultado_contador);
+
+    comp: Comparador_16 port map(A => resultado_contador, B => Ciclos_comparador, CLOCK => CLOCK, igual_ou_maior => cmp_eq); 
+
+	reg_de_iaf: reg_iaf port map(entrada_iaf => IAF, carregar_bit_iaf => '1', CLOCK_iaf => CLOCK, saida_iaf => saida_IAF_reg); 
+
+    reg_de_ia: reg_ia port map(entrada_ia => saida_IAF_reg, carregar_bit_ia => IA_load, CLOCK_ia => CLOCK, saida_ia =>IA); 
+
+
+	IAF_carregado <= saida_IAF_reg;
+
+end architecture;
