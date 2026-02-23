@@ -43,6 +43,8 @@ The system follows a controller–datapath structure:
 
 The controller is implemented as a Moore/Mealy FSM.
 
+
+
 ### States
 
 - `S0` – Elevator starting
@@ -57,25 +59,21 @@ State transitions depend on floor requests and current position.
 
 ## Inputs
 
-
+- `BC1` - Button Call 1, calls the elevator to the first floor
+- `BC2` - Button Call 2, calls the elevator to the second floor
+- `SPA` - Open door sensor, used to set the emergency state if the elevator is movind and the door is open
+- `BE` - Emergency button, used to go to the emergency state
+- `CLOCK` - Clock period (system utilizes a conversor from 50 MHz to 4 MH\)
 
 ---
 
 ## Outputs
 
-
-
-## Simulation
-
-The system was verified through simulation using [Tool Name].
-
-The testbench validates:
-
-- State transitions
-- Correct response to floor requests
-- Proper output activation
-
-[Insert waveform screenshot if available]
+- `PA` - Open door indicator
+- `LE` - Emergency light
+- `ME` - Motor in execution
+- `IA_saida` - Current floor
+- `IAF_saida` - Future floor
 
 ---
 
